@@ -31,7 +31,7 @@ export class CernicaPatientsList {
 
   async componentWillLoad() {
     if (!this.generateOnce) {
-      this.patients = await this.generatePatients(10);
+      this.patients = await this.generatePatients(5);
       this.generateOnce = true;
     }
   }
