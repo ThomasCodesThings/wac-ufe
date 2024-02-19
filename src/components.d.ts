@@ -6,32 +6,96 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface CernicaPatientsList {
+    interface CernicaDepartmentApp {
+        "basePath": string;
+    }
+    interface CernicaDepartmentEdit {
+        "entryId": string;
+    }
+    interface CernicaDepartmentList {
     }
 }
+export interface CernicaDepartmentEditCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCernicaDepartmentEditElement;
+}
+export interface CernicaDepartmentListCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCernicaDepartmentListElement;
+}
 declare global {
-    interface HTMLCernicaPatientsListElement extends Components.CernicaPatientsList, HTMLStencilElement {
+    interface HTMLCernicaDepartmentAppElement extends Components.CernicaDepartmentApp, HTMLStencilElement {
     }
-    var HTMLCernicaPatientsListElement: {
-        prototype: HTMLCernicaPatientsListElement;
-        new (): HTMLCernicaPatientsListElement;
+    var HTMLCernicaDepartmentAppElement: {
+        prototype: HTMLCernicaDepartmentAppElement;
+        new (): HTMLCernicaDepartmentAppElement;
+    };
+    interface HTMLCernicaDepartmentEditElementEventMap {
+        "edit-closed": string;
+    }
+    interface HTMLCernicaDepartmentEditElement extends Components.CernicaDepartmentEdit, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLCernicaDepartmentEditElementEventMap>(type: K, listener: (this: HTMLCernicaDepartmentEditElement, ev: CernicaDepartmentEditCustomEvent<HTMLCernicaDepartmentEditElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLCernicaDepartmentEditElementEventMap>(type: K, listener: (this: HTMLCernicaDepartmentEditElement, ev: CernicaDepartmentEditCustomEvent<HTMLCernicaDepartmentEditElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLCernicaDepartmentEditElement: {
+        prototype: HTMLCernicaDepartmentEditElement;
+        new (): HTMLCernicaDepartmentEditElement;
+    };
+    interface HTMLCernicaDepartmentListElementEventMap {
+        "edit": string;
+        "delete": string;
+    }
+    interface HTMLCernicaDepartmentListElement extends Components.CernicaDepartmentList, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLCernicaDepartmentListElementEventMap>(type: K, listener: (this: HTMLCernicaDepartmentListElement, ev: CernicaDepartmentListCustomEvent<HTMLCernicaDepartmentListElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLCernicaDepartmentListElementEventMap>(type: K, listener: (this: HTMLCernicaDepartmentListElement, ev: CernicaDepartmentListCustomEvent<HTMLCernicaDepartmentListElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLCernicaDepartmentListElement: {
+        prototype: HTMLCernicaDepartmentListElement;
+        new (): HTMLCernicaDepartmentListElement;
     };
     interface HTMLElementTagNameMap {
-        "cernica-patients-list": HTMLCernicaPatientsListElement;
+        "cernica-department-app": HTMLCernicaDepartmentAppElement;
+        "cernica-department-edit": HTMLCernicaDepartmentEditElement;
+        "cernica-department-list": HTMLCernicaDepartmentListElement;
     }
 }
 declare namespace LocalJSX {
-    interface CernicaPatientsList {
+    interface CernicaDepartmentApp {
+        "basePath"?: string;
+    }
+    interface CernicaDepartmentEdit {
+        "entryId"?: string;
+        "onEdit-closed"?: (event: CernicaDepartmentEditCustomEvent<string>) => void;
+    }
+    interface CernicaDepartmentList {
+        "onDelete"?: (event: CernicaDepartmentListCustomEvent<string>) => void;
+        "onEdit"?: (event: CernicaDepartmentListCustomEvent<string>) => void;
     }
     interface IntrinsicElements {
-        "cernica-patients-list": CernicaPatientsList;
+        "cernica-department-app": CernicaDepartmentApp;
+        "cernica-department-edit": CernicaDepartmentEdit;
+        "cernica-department-list": CernicaDepartmentList;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "cernica-patients-list": LocalJSX.CernicaPatientsList & JSXBase.HTMLAttributes<HTMLCernicaPatientsListElement>;
+            "cernica-department-app": LocalJSX.CernicaDepartmentApp & JSXBase.HTMLAttributes<HTMLCernicaDepartmentAppElement>;
+            "cernica-department-edit": LocalJSX.CernicaDepartmentEdit & JSXBase.HTMLAttributes<HTMLCernicaDepartmentEditElement>;
+            "cernica-department-list": LocalJSX.CernicaDepartmentList & JSXBase.HTMLAttributes<HTMLCernicaDepartmentListElement>;
         }
     }
 }
