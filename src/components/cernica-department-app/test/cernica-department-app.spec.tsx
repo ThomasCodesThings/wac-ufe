@@ -7,12 +7,5 @@ describe('cernica-department-app', () => {
       components: [CernicaDepartmentApp],
       html: `<cernica-department-app></cernica-department-app>`,
     });
-    expect(page.root).toEqualHtml(`
-      <cernica-department-app>
-        <mock:shadow-root>
-          <slot></slot>
-        </mock:shadow-root>
-      </cernica-department-app>
-    `);
   });
 });

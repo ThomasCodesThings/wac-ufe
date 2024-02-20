@@ -9,7 +9,6 @@ export class CernicaDepartmentList {
   @Event({eventName: "edit"}) editClicked: EventEmitter<string>;
   @Event({eventName: "delete"}) deleteClicked: EventEmitter<string>;
   patients: any[];
-  generateOnce: boolean = false;
 
   private async generatePatients(number_of_patients: number) {
     const patients = [];
@@ -29,10 +28,7 @@ export class CernicaDepartmentList {
 }
 
   async componentWillLoad() {
-    if (!this.generateOnce) {
-      this.patients = await this.generatePatients(10);
-      this.generateOnce = true;
-    }
+    this.patients = await this.generatePatients(10);
   }
 
 
