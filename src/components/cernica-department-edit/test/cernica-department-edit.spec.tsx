@@ -58,10 +58,6 @@ describe('cernica-department-edit', () => {
           </md-icon>
           Zmazať
         </md-filled-tonal-button>
-        <span class="stretch-fill"></span>
-        <md-outlined-button id="cancel">
-          Zrušiť
-        </md-outlined-button>
         <md-filled-button id="confirm">
           <md-icon slot="icon">
             save

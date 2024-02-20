@@ -16,7 +16,6 @@ export class CernicaDepartmentApp {
 
    componentWillLoad() {
      const baseUri = new URL(this.basePath, document.baseURI || "/").pathname;
-     console.log("baseUri", baseUri)
 
      const toRelative = (path: string) => {
        if (path.startsWith( baseUri)) {
@@ -40,7 +39,7 @@ export class CernicaDepartmentApp {
     let entryId = "@new"
 
     switch (true) {
-      case this.relativePath.startsWith('edit/'):
+      case this.relativePath.startsWith('edit'):
         element = 'edit';
         entryId = this.relativePath.split('/')[1];
         break;
@@ -55,7 +54,7 @@ export class CernicaDepartmentApp {
         break;
     }
 
-  
+    console.log(element)
     const navigate = (path:string) => {
       const absolute = new URL(path, new URL(this.basePath, document.baseURI)).pathname;
       window.navigation.navigate(absolute)

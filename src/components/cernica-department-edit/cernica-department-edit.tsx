@@ -78,11 +78,6 @@ export class CernicaDepartmentEdit {
            <md-icon slot="icon">delete</md-icon>
            Zmazať
          </md-filled-tonal-button>
-         <span class="stretch-fill"></span>
-         <md-outlined-button id="cancel"
-           onClick={() => this.editClosed.emit("cancel")}>
-           Zrušiť
-         </md-outlined-button>
          <md-filled-button id="confirm"
            onClick={() => this.editClosed.emit("store")}>
            <md-icon slot="icon">save</md-icon>
