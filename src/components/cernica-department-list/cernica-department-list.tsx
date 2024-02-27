@@ -8,6 +8,7 @@ import { Component, Event, EventEmitter,  Host, h } from '@stencil/core';
 export class CernicaDepartmentList {
   @Event({eventName: "edit"}) editClicked: EventEmitter<string>;
   @Event({eventName: "delete"}) deleteClicked: EventEmitter<string>;
+  @Event({eventName: "create"}) createClicked: EventEmitter<string>;
   patients: any[];
 
   private async generatePatients(number_of_patients: number) {
@@ -35,7 +36,9 @@ export class CernicaDepartmentList {
   render() {
     return (
       <Host>
+        <span>
         <h2>Patients</h2>
+        <md-filled-button onClick={() => this.createClicked.emit('')}>Create</md-filled-button></span>
         <md-list>
           {this.patients.map((patient) => (
             <md-list-item>
