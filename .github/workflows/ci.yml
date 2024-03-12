@@ -52,6 +52,13 @@ jobs:
         images: |
           thomascodesthings/cernica-ufe
         tags: |
+          type=schedule
+          type=ref,event=branch
+          type=ref,event=branch,suffix={{date '.YYYYMMDD.HHmm'}} # napr `main.20210930.1200`
+          type=ref,event=tag
+          type=semver,pattern={{version}} # napr pri tagu  `v1.0.0`
+          type=semver,pattern={{major}}.{{minor}} # napr `1.0`
+          type=semver,pattern={{major}}
           type=raw,value=latest,enable={{is_default_branch}} # `latest` pre každý komit do main vetvy
 
     - name: Build and push
