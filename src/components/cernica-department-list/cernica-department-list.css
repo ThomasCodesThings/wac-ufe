@@ -5,3 +5,42 @@
 md-list-item{
   border: 1px solid black;
 }
+
+.custom-dialog {
+  display: flex;
+  flex-direction: column;
+}
+
+.custom-dialog md-dialog-title {
+  font-size: 24px;
+  color: #333;
+}
+
+.custom-dialog md-dialog-content {
+  display: flex;
+  flex-direction: row;
+}
+
+.custom-dialog md-dialog-actions {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.custom-dialog md-button {
+  margin: 8px;
+}
+
+.custom-dialog md-button:first-child {
+  background-color: #ccc;
+  color: #333;
+}
+
+.custom-dialog md-button:last-child {
+  background-color: #6200ee;
+  color: white;
+}
+
+.custom-dialog md-button:last-child:hover {
+  background-color: #3700b3;
+}
+

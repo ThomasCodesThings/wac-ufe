@@ -7,14 +7,18 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface CernicaDepartmentApp {
+        "apiBase": string;
         "basePath": string;
     }
     interface CernicaDepartmentCreate {
+        "apiBase": string;
     }
     interface CernicaDepartmentEdit {
+        "apiBase": string;
         "entryId": string;
     }
     interface CernicaDepartmentList {
+        "apiBase": string;
     }
 }
 export interface CernicaDepartmentCreateCustomEvent<T> extends CustomEvent<T> {
@@ -98,16 +102,20 @@ declare global {
 }
 declare namespace LocalJSX {
     interface CernicaDepartmentApp {
+        "apiBase"?: string;
         "basePath"?: string;
     }
     interface CernicaDepartmentCreate {
+        "apiBase"?: string;
         "onCreate-closed"?: (event: CernicaDepartmentCreateCustomEvent<string>) => void;
     }
     interface CernicaDepartmentEdit {
+        "apiBase"?: string;
         "entryId"?: string;
         "onEdit-closed"?: (event: CernicaDepartmentEditCustomEvent<string>) => void;
     }
     interface CernicaDepartmentList {
+        "apiBase"?: string;
         "onCreate"?: (event: CernicaDepartmentListCustomEvent<string>) => void;
         "onDelete"?: (event: CernicaDepartmentListCustomEvent<string>) => void;
         "onEdit"?: (event: CernicaDepartmentListCustomEvent<string>) => void;

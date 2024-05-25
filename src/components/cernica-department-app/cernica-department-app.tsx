@@ -13,6 +13,7 @@ export class CernicaDepartmentApp {
   @State() private relativePath = "";
 
    @Prop() basePath: string="";
+   @Prop() apiBase: string="";
 
    componentWillLoad() {
      const baseUri = new URL(this.basePath, document.baseURI || "/").pathname;
@@ -54,22 +55,19 @@ export class CernicaDepartmentApp {
         break;
     }
 
-    console.log(element)
     const navigate = (path:string) => {
       const absolute = new URL(path, new URL(this.basePath, document.baseURI)).pathname;
       window.navigation.navigate(absolute)
     }
-  
+
     return (
       <Host>
-        { element === "create" ? <cernica-department-create></cernica-department-create>
+        { element === "create" ? <cernica-department-create api-base={this.apiBase}></cernica-department-create>
         : element === "edit" 
-        ? <cernica-department-edit entry-id={entryId}
+        ? <cernica-department-edit entry-id={entryId} apiBase={this.apiBase}
             oneditor-closed={ () => navigate("./list")} >
           </cernica-department-edit>
-        : element === "delete" ? <cernica-department-delete entry-id={entryId}
-            ondelete-closed={ () => navigate("./list")}></cernica-department-delete>
-        : <cernica-department-list onEdit={ (ev) => navigate(`./edit/${ev.detail}`)} onDelete={ (ev) => console.log("delete", ev.detail)} > </cernica-department-list>
+        : <cernica-department-list onEdit={ (ev) => navigate(`./edit/${ev.detail}`)} api-base={this.apiBase} onCreate={(ev) => navigate('./create')}> </cernica-department-list>
         }
       </Host>
     );

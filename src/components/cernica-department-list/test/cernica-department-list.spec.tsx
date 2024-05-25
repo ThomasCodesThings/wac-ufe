@@ -9,7 +9,7 @@ describe('cernica-department-list', () => {
     });
 
     const list = page.rootInstance as CernicaDepartmentList;
-    const expecteddepartment = list.patients.length;
+    const expecteddepartment = list.operations.length;
 
     const items = page.root.shadowRoot.querySelectorAll('md-list-item');
     expect(items.length).toEqual(expecteddepartment);
