@@ -11,7 +11,7 @@ describe('cernica-department-app', () => {
     expect(page.root).toEqualHtml(`
       <cernica-department-app>
         <mock:shadow-root>
-          <cernica-department-list></cernica-department-list>
+          <cernica-department-list api-base=""></cernica-department-list>
         </mock:shadow-root>
       </cernica-department-app>
     `);

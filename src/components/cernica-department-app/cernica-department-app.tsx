@@ -67,7 +67,7 @@ export class CernicaDepartmentApp {
         ? <cernica-department-edit entry-id={entryId} apiBase={this.apiBase}
             oneditor-closed={ () => navigate("./list")} >
           </cernica-department-edit>
-        : <cernica-department-list onEdit={ (ev) => navigate(`./edit/${ev.detail}`)} api-base={this.apiBase} onCreate={(ev) => navigate('./create')}> </cernica-department-list>
+        : <cernica-department-list onEdit={ (ev) => navigate(`./edit/${ev.detail}`)} api-base={this.apiBase} onCreate={() => navigate('./create')}> </cernica-department-list>
         }
       </Host>
     );

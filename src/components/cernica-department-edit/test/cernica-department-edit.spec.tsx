@@ -14,23 +14,23 @@ describe('cernica-department-edit', () => {
         <h2 class="title">
         Editácia záznamu
       </h2>
-      <md-filled-text-field label="Meno">
+      <md-filled-text-field label="Meno" value="">
         <md-icon slot="leading-icon">
          person
        </md-icon>
       </md-filled-text-field>
-      <md-filled-text-field label="Priezvisko">
+      <md-filled-text-field label="Priezvisko" value="">
         <md-icon slot="leading-icon">
           person
         </md-icon>
       </md-filled-text-field>
-      <md-filled-text-field label="Oddelenie">
+      <md-outlined-select label="Oddelenie" value="">
         <md-icon slot="leading-icon">
           home_health
         </md-icon>
-      </md-filled-text-field>
+      </md-outlined-select>
      <input id="scheduledDate" name="scheduledDate" type="date">
-<md-outlined-select label="Trvanie (v minútach)">
+<md-outlined-select label="Trvanie" value="">
         <md-icon slot="leading-icon">
           schedule
         </md-icon>
@@ -52,12 +52,6 @@ describe('cernica-department-edit', () => {
       </md-outlined-select>
       <md-divider></md-divider>
       <div class="actions">
-        <md-filled-tonal-button id="delete">
-         <md-icon slot="icon">
-            delete
-          </md-icon>
-          Zmazať
-        </md-filled-tonal-button>
         <md-filled-button id="confirm">
           <md-icon slot="icon">
             save

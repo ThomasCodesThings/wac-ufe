@@ -11,17 +11,17 @@ describe('cernica-department-create', () => {
       <cernica-department-create>
         <mock:shadow-root>
         <h2 class="title">Vytvorenie nového záznamu</h2>
-        <md-filled-text-field label="Meno">
+        <md-filled-text-field label="Meno" value="">
           <md-icon slot="leading-icon">person</md-icon>
         </md-filled-text-field>
-        <md-filled-text-field label="Priezvisko">
+        <md-filled-text-field label="Priezvisko" value="">
           <md-icon slot="leading-icon">person</md-icon>
         </md-filled-text-field>
-        <md-filled-text-field label="Oddelenie">
+        <md-outlined-select label="Oddelenie">
           <md-icon slot="leading-icon">home_health</md-icon>
-        </md-filled-text-field>
+        </md-outlined-select>
         <input type="date" id="scheduledDate" name="scheduledDate"  />
-        <md-outlined-select label="Trvanie (v minútach)">
+        <md-outlined-select label="Trvanie" value="">
           <md-icon slot="leading-icon">schedule</md-icon>
           <md-select-option value="15">15 minút</md-select-option>
           <md-select-option value="30">30 minút</md-select-option>
