@@ -18,7 +18,7 @@ md-list-item{
 
 .custom-dialog md-dialog-content {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .custom-dialog md-dialog-actions {
@@ -42,5 +42,33 @@ md-list-item{
 
 .custom-dialog md-button:last-child:hover {
   background-color: #3700b3;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+}
+
+th, td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  font-weight: bold;
+  background-color: #f2f2f2;
+}
+
+td.actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+td.actions md-icon {
+  cursor: pointer;
+  margin: 0 8px;
 }
 

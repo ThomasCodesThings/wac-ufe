@@ -51,6 +51,10 @@ export class CernicaDepartmentApp {
         element = 'delete';
         entryId = this.relativePath.split('/')[1];
         break;
+      case this.relativePath.startsWith('department'):
+        element = 'department';
+        entryId = this.relativePath.split('/')[1];
+        break;
       default:
         break;
     }
@@ -65,9 +69,9 @@ export class CernicaDepartmentApp {
         { element === "create" ? <cernica-department-create api-base={this.apiBase}></cernica-department-create>
         : element === "edit" 
         ? <cernica-department-edit entry-id={entryId} apiBase={this.apiBase}
-            oneditor-closed={ () => navigate("./list")} >
-          </cernica-department-edit>
-        : <cernica-department-list onEdit={ (ev) => navigate(`./edit/${ev.detail}`)} api-base={this.apiBase} onCreate={() => navigate('./create')}> </cernica-department-list>
+            oneditor-closed={ () => navigate("./list")} > 
+          </cernica-department-edit> : element === "department" ? <cernica-department-detail entry-id={entryId} api-base={this.apiBase}></cernica-department-detail>
+        : <cernica-department-list onEdit={ (ev) => navigate(`./edit/${ev.detail}`)} api-base={this.apiBase} onCreate={() => navigate('./create')} onDetail={(ev) => navigate(`./department/${ev.detail}`)}> </cernica-department-list>
         }
       </Host>
     );

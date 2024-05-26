@@ -13,6 +13,10 @@ export namespace Components {
     interface CernicaDepartmentCreate {
         "apiBase": string;
     }
+    interface CernicaDepartmentDetail {
+        "apiBase": string;
+        "entryId": string;
+    }
     interface CernicaDepartmentEdit {
         "apiBase": string;
         "entryId": string;
@@ -57,6 +61,12 @@ declare global {
         prototype: HTMLCernicaDepartmentCreateElement;
         new (): HTMLCernicaDepartmentCreateElement;
     };
+    interface HTMLCernicaDepartmentDetailElement extends Components.CernicaDepartmentDetail, HTMLStencilElement {
+    }
+    var HTMLCernicaDepartmentDetailElement: {
+        prototype: HTMLCernicaDepartmentDetailElement;
+        new (): HTMLCernicaDepartmentDetailElement;
+    };
     interface HTMLCernicaDepartmentEditElementEventMap {
         "edit-closed": string;
     }
@@ -78,6 +88,7 @@ declare global {
         "edit": string;
         "delete": string;
         "create": string;
+        "detail": {string};
     }
     interface HTMLCernicaDepartmentListElement extends Components.CernicaDepartmentList, HTMLStencilElement {
         addEventListener<K extends keyof HTMLCernicaDepartmentListElementEventMap>(type: K, listener: (this: HTMLCernicaDepartmentListElement, ev: CernicaDepartmentListCustomEvent<HTMLCernicaDepartmentListElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -96,6 +107,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "cernica-department-app": HTMLCernicaDepartmentAppElement;
         "cernica-department-create": HTMLCernicaDepartmentCreateElement;
+        "cernica-department-detail": HTMLCernicaDepartmentDetailElement;
         "cernica-department-edit": HTMLCernicaDepartmentEditElement;
         "cernica-department-list": HTMLCernicaDepartmentListElement;
     }
@@ -109,6 +121,10 @@ declare namespace LocalJSX {
         "apiBase"?: string;
         "onCreate-closed"?: (event: CernicaDepartmentCreateCustomEvent<string>) => void;
     }
+    interface CernicaDepartmentDetail {
+        "apiBase"?: string;
+        "entryId"?: string;
+    }
     interface CernicaDepartmentEdit {
         "apiBase"?: string;
         "entryId"?: string;
@@ -118,11 +134,13 @@ declare namespace LocalJSX {
         "apiBase"?: string;
         "onCreate"?: (event: CernicaDepartmentListCustomEvent<string>) => void;
         "onDelete"?: (event: CernicaDepartmentListCustomEvent<string>) => void;
+        "onDetail"?: (event: CernicaDepartmentListCustomEvent<{string}>) => void;
         "onEdit"?: (event: CernicaDepartmentListCustomEvent<string>) => void;
     }
     interface IntrinsicElements {
         "cernica-department-app": CernicaDepartmentApp;
         "cernica-department-create": CernicaDepartmentCreate;
+        "cernica-department-detail": CernicaDepartmentDetail;
         "cernica-department-edit": CernicaDepartmentEdit;
         "cernica-department-list": CernicaDepartmentList;
     }
@@ -133,6 +151,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "cernica-department-app": LocalJSX.CernicaDepartmentApp & JSXBase.HTMLAttributes<HTMLCernicaDepartmentAppElement>;
             "cernica-department-create": LocalJSX.CernicaDepartmentCreate & JSXBase.HTMLAttributes<HTMLCernicaDepartmentCreateElement>;
+            "cernica-department-detail": LocalJSX.CernicaDepartmentDetail & JSXBase.HTMLAttributes<HTMLCernicaDepartmentDetailElement>;
             "cernica-department-edit": LocalJSX.CernicaDepartmentEdit & JSXBase.HTMLAttributes<HTMLCernicaDepartmentEditElement>;
             "cernica-department-list": LocalJSX.CernicaDepartmentList & JSXBase.HTMLAttributes<HTMLCernicaDepartmentListElement>;
         }

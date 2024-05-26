@@ -9,6 +9,7 @@ export class CernicaDepartmentList {
   @Event({ eventName: "edit" }) editClicked: EventEmitter<string>;
   @Event({ eventName: "delete" }) deleteClicked: EventEmitter<string>;
   @Event({ eventName: "create" }) createClicked: EventEmitter<string>;
+  @Event({ eventName: "detail" }) departmentClicked: EventEmitter<{string}>;
   @Prop() apiBase: string;
   
   @State() operations: any[] = [];
@@ -16,6 +17,7 @@ export class CernicaDepartmentList {
   @State() connectionOK = true;
   @State() visible = false;
   @State() newDepartmentName = '';
+  @State() pricePerHour = 0;
 
   private async fetchOperations() {
     try {
@@ -67,6 +69,7 @@ export class CernicaDepartmentList {
   private async addDepartment() {
     const data = new URLSearchParams();
     data.append('name', this.newDepartmentName);
+    data.append('pricePerHour', this.pricePerHour.toString());
     try {
       const response = await fetch(`${this.apiBase}/departments`, {
         method: 'POST',
@@ -109,48 +112,93 @@ export class CernicaDepartmentList {
     this.newDepartmentName = (event.target as HTMLInputElement).value;
   }
 
+  handlePricePerHourChange(event: Event) {
+    this.pricePerHour = parseFloat((event.target as HTMLInputElement).value);
+  }
+
   render() {
     return (
       <Host>
         {this.connectionOK ? (
           <div style={{display: "flex flex-row"}}>
             <span>
-              <h2>Operations</h2>
-              <md-filled-button onClick={() => this.createClicked.emit('')}>Create</md-filled-button>
+              <h2>Zoznam úkonov</h2>
+              <md-filled-button onClick={() => this.createClicked.emit('')}>Vytvoriť nový úkon</md-filled-button>
             </span>
-            <md-list>
-              {this.operations?.length > 0 && this.operations.map((operation) => (
-                <md-list-item>
-                  <div slot="headline">{operation.firstname + " " + operation.surname}</div>
-                  <md-icon slot="start">person</md-icon>
-                  <div slot="supporting-text">{operation.department}</div>
-                  <div slot="supporting-text">{operation.appointmentDate}</div>
-                  <div slot="supporting-text">{operation.duration}</div>
-                  <md-icon slot="end" onClick={() => this.editClicked.emit(operation.operationId.toString())}>edit</md-icon>
-                  <md-icon slot="end" onClick={async() => await this.deleteOperation(operation.operationId)}>delete</md-icon>
-                </md-list-item>
-              ))}
-            </md-list>
+            <div>
+            <h2>Úkony</h2>
+            { this.operations.length > 0 ? (
+              <div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Meno a priezvisko</th>
+                    <th>Oddelenie</th>
+                    <th>Dátum</th>
+                    <th>Trvanie (v minútach)</th>
+                    <th>Akcie</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {this.operations.map((operation) => (
+                    <tr>
+                      <td>{operation.firstname} {operation.surname}</td>
+                      <td>{operation.department}</td>
+                      <td>{operation.appointmentDate}</td>
+                      <td>{operation.duration}</td>
+                      <td class="actions">
+                        <md-icon onClick={() => this.editClicked.emit(operation.operationId.toString())}>edit</md-icon>
+                        <md-icon onClick={async () => await this.deleteOperation(operation.operationId)}>delete</md-icon>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+        </div>
+      ) : (
+        <h4>Neexistujú žiadne úkony</h4>
+      )}
+        </div>
             <span>
-              <h3>Departments</h3>
+              <h3>Oddelenia</h3>
             </span>
-            <md-list>
-              {this.departments?.length > 0 && this.departments.map((department) => (
-                <md-list-item>
-                  <div slot="headline">{department.name}</div>
-                  <md-icon slot="start">business</md-icon>
-                  <md-icon slot="end" onClick={async () => await this.deleteDepartment(department.departmentId)}>delete</md-icon>
-                </md-list-item>
-              ))}
-            </md-list>
-            <md-filled-button onClick={() => this.visible = true}>Add department</md-filled-button>
+            {this.departments?.length > 0 ? (
+              <div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Názov oddelenia</th>
+                    <th>Cena za hodinu (€)</th>
+                    <th>Akcie</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  {this.departments.map((department) => (
+                    <tr>
+                      <td>{department.name}</td>
+                      <td>{department.pricePerHour}</td>
+                      <td class="actions">
+                        <md-icon onClick={async () => await this.deleteDepartment(department.departmentId)}>delete</md-icon>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            ) : (
+              <h4>Neexistujú žiadne oddelenia</h4>
+            )}
+            <md-filled-button onClick={() => this.visible = true}>Pridať oddelenie</md-filled-button>
             {this.visible && (
               <md-dialog class="custom-dialog">
                 <md-dialog-content>
-                  <md-filled-text-field label="Name" value={this.newDepartmentName} onInput={(event) => this.handleInputChange(event)}></md-filled-text-field>
+                  <md-filled-text-field label="Názov" value={this.newDepartmentName} onInput={(event) => this.handleInputChange(event)}></md-filled-text-field>
+                  <md-filled-text-field label="Cena za hodinu práce (v €)" value={this.pricePerHour.toString()} onInput={(event) => this.handlePricePerHourChange(event)}></md-filled-text-field>
                 </md-dialog-content>
                 <md-dialog-actions>
-                  <md-filled-button onClick={async() => {await this.addDepartment(); this.visible = false}}>Add</md-filled-button>
+                  <md-filled-button onClick={async() => {await this.addDepartment(); this.visible = false}}>Pridať</md-filled-button>
+                  <md-filled-button onClick={() =>  this.visible = false}>Zrušiť</md-filled-button>
                 </md-dialog-actions>
               </md-dialog>
             )}

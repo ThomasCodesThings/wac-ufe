@@ -14,11 +14,12 @@
 
 ## Events
 
-| Event    | Description | Type                  |
-| -------- | ----------- | --------------------- |
-| `create` |             | `CustomEvent<string>` |
-| `delete` |             | `CustomEvent<string>` |
-| `edit`   |             | `CustomEvent<string>` |
+| Event    | Description | Type                            |
+| -------- | ----------- | ------------------------------- |
+| `create` |             | `CustomEvent<string>`           |
+| `delete` |             | `CustomEvent<string>`           |
+| `detail` |             | `CustomEvent<{ string: any; }>` |
+| `edit`   |             | `CustomEvent<string>`           |
 
 
 ## Dependencies
