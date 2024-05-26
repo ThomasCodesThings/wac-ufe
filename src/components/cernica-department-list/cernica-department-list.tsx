@@ -127,7 +127,7 @@ export class CernicaDepartmentList {
             </span>
             <div>
             <h2>Úkony</h2>
-            { this.operations.length > 0 ? (
+            { this.operations?.length > 0 ? (
               <div>
               <table>
                 <thead>
@@ -194,7 +194,7 @@ export class CernicaDepartmentList {
               <md-dialog class="custom-dialog">
                 <md-dialog-content>
                   <md-filled-text-field label="Názov" value={this.newDepartmentName} onInput={(event) => this.handleInputChange(event)}></md-filled-text-field>
-                  <md-filled-text-field label="Cena za hodinu práce (v €)" value={this.pricePerHour.toString()} onInput={(event) => this.handlePricePerHourChange(event)}></md-filled-text-field>
+                  <md-filled-text-field type="number" label="Cena za hodinu práce (v €)" value={this.pricePerHour.toString()} onInput={(event) => this.handlePricePerHourChange(event)}></md-filled-text-field>
                 </md-dialog-content>
                 <md-dialog-actions>
                   <md-filled-button onClick={async() => {await this.addDepartment(); this.visible = false}}>Pridať</md-filled-button>

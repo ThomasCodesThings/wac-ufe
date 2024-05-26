@@ -102,7 +102,7 @@ export class CernicaDepartmentCreate {
       </md-filled-text-field>
       <md-outlined-select label="Oddelenie" onInput={this.handleDepartmentChange}>
       <md-icon slot="leading-icon">home_health</md-icon>
-      {this.departments.map((department) => (
+      {this.departments?.length > 0 && this.departments.map((department) => (
         <md-select-option value={department.name}>{department.name}</md-select-option>
       ))}
       </md-outlined-select>
