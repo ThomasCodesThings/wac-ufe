@@ -127,7 +127,7 @@ export class CernicaDepartmentList {
             </span>
             <div>
             <h2>Úkony</h2>
-            {this.operations && this.operations?.length > 0 ? (
+            {this.operations != null && this.operations?.length > 0 ? (
               <div>
               <table>
                 <thead>
