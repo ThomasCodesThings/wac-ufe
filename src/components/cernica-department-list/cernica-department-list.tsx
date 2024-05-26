@@ -79,6 +79,7 @@ export class CernicaDepartmentList {
         body: data.toString()
       });
       if (!response.ok) {
+        console.log(response);
         throw new Error('Network response was not ok');
       }
       this.newDepartmentName = '';
@@ -127,7 +128,7 @@ export class CernicaDepartmentList {
             </span>
             <div>
             <h2>Úkony</h2>
-            {this.operations != null && this.operations?.length > 0 ? (
+            {this.operations?.length > 0 ? (
               <div>
               <table>
                 <thead>
