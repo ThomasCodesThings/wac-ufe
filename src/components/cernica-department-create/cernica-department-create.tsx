@@ -106,7 +106,7 @@ export class CernicaDepartmentCreate {
         <md-select-option value={department.name}>{department.name}</md-select-option>
       ))}
       </md-outlined-select>
-      <input type="date" id="scheduledDate" name="scheduledDate"  />
+      <input type="date" id="scheduledDate" name="scheduledDate"/>
       <md-outlined-select label="Trvanie" value={this.duration.toString()} onInput={this.handleDurationChange}>
       <md-icon slot="leading-icon">schedule</md-icon>
       <md-select-option value="15">15 minút</md-select-option>
