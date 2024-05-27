@@ -10,7 +10,7 @@ describe('cernica-department-create', () => {
     expect(page.root).toEqualHtml(`
       <cernica-department-create>
         <mock:shadow-root>
-        <h2 class="title">Vytvorenie nového záznamu</h2>
+        <h2 class="title">Vytvorenie nového úkonu</h2>
         <md-filled-text-field label="Meno" value="">
           <md-icon slot="leading-icon">person</md-icon>
         </md-filled-text-field>

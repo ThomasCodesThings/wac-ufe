@@ -12,7 +12,7 @@ describe('cernica-department-edit', () => {
       <cernica-department-edit>
         <mock:shadow-root>
         <h2 class="title">
-        Editácia záznamu
+        Editácia úkonu
       </h2>
       <md-filled-text-field label="Meno" value="">
         <md-icon slot="leading-icon">
