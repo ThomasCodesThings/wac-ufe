@@ -9,7 +9,7 @@ export class CernicaDepartmentList {
   @Event({ eventName: "edit" }) editClicked: EventEmitter<string>;
   @Event({ eventName: "delete" }) deleteClicked: EventEmitter<string>;
   @Event({ eventName: "create" }) createClicked: EventEmitter<string>;
-  @Event({ eventName: "detail" }) departmentClicked: EventEmitter<{string}>;
+  @Event({ eventName: "detail" }) departmentClicked: EventEmitter<string>;
   @Prop() apiBase: string;
   
   @State() operations: any[] = [];
@@ -127,6 +127,8 @@ export class CernicaDepartmentList {
   async componentWillLoad() {
     this.operations = await this.fetchOperations();
     this.departments = await this.fetchDepartments();
+    console.log("Departments:", this.departments);
+    console.log("Operations:", this.operations);
   }
 
   handleInputChange(event: Event) {
@@ -143,7 +145,6 @@ export class CernicaDepartmentList {
         {this.connectionOK ? (
           <div style={{display: "flex flex-row"}}>
             <span>
-              <h2>Zoznam úkonov</h2>
               <md-filled-button onClick={() => this.createClicked.emit('')}>Vytvoriť nový úkon</md-filled-button>
             </span>
             <div>
@@ -197,7 +198,7 @@ export class CernicaDepartmentList {
                 <tbody>
                   {this.departments.map((department) => (
                     <tr>
-                      <td>{department.name}</td>
+                      <td onClick={() => this.departmentClicked.emit(department.departmentId.toString())}>{department.name}</td>
                       <td>{department.pricePerHour}</td>
                       <td class="actions">
                         <md-icon onClick={async () => await this.deleteDepartment(department.departmentId)}>delete</md-icon>

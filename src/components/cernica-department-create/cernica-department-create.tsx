@@ -57,6 +57,7 @@ export class CernicaDepartmentCreate {
 
   async componentWillLoad() {
     await this.getDepartments();
+    console.log("Departments:", this.departments);
   }
 
   handleSubmit = async () => {
@@ -102,7 +103,7 @@ export class CernicaDepartmentCreate {
     }
     return (
       <Host>
-      <h2 class="title">Vytvorenie nového záznamu</h2>
+      <h2 class="title">Vytvorenie nového úkonu</h2>
       <md-filled-text-field label="Meno" value={this.firstName} onInput={this.handleFirstNameChange}>
       <md-icon slot="leading-icon">person</md-icon>
       </md-filled-text-field>

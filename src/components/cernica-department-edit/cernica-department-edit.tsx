@@ -82,6 +82,8 @@ export class CernicaDepartmentEdit {
     if (this.entryId !== "@new")
       await this.fetchOperation();
     await this.getDepartments();
+    console.log("Operation:", this.firstName, this.lastName, this.department, this.scheduledDate, this.duration);
+    console.log("Departments:", this.departments);
   }
 
   private findDepartment(name: string) {
@@ -157,7 +159,7 @@ export class CernicaDepartmentEdit {
   render() {
     return (
       <Host>
-        <h2 class="title">Editácia záznamu {this.entryId}</h2>
+        <h2 class="title">Editácia úkonu {this.entryId}</h2>
       <md-filled-text-field label="Meno" value={this.firstName} onInput={this.handleFirstNameChange}>
         <md-icon slot="leading-icon">person</md-icon>
       </md-filled-text-field>

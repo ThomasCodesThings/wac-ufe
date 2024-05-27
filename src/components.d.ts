@@ -88,7 +88,7 @@ declare global {
         "edit": string;
         "delete": string;
         "create": string;
-        "detail": {string};
+        "detail": string;
     }
     interface HTMLCernicaDepartmentListElement extends Components.CernicaDepartmentList, HTMLStencilElement {
         addEventListener<K extends keyof HTMLCernicaDepartmentListElementEventMap>(type: K, listener: (this: HTMLCernicaDepartmentListElement, ev: CernicaDepartmentListCustomEvent<HTMLCernicaDepartmentListElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -134,7 +134,7 @@ declare namespace LocalJSX {
         "apiBase"?: string;
         "onCreate"?: (event: CernicaDepartmentListCustomEvent<string>) => void;
         "onDelete"?: (event: CernicaDepartmentListCustomEvent<string>) => void;
-        "onDetail"?: (event: CernicaDepartmentListCustomEvent<{string}>) => void;
+        "onDetail"?: (event: CernicaDepartmentListCustomEvent<string>) => void;
         "onEdit"?: (event: CernicaDepartmentListCustomEvent<string>) => void;
     }
     interface IntrinsicElements {

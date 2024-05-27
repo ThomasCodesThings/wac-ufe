@@ -59,7 +59,7 @@ export class CernicaDepartmentDetails {
         <p>Cena za hodinu: {this.department.pricePerHour} €</p>
         { this.operations.length > 0 ? (
         <div>
-        <h2>Operácie</h2>
+        <h2>Úkony</h2>
         <table>
           <thead>
             <tr>
