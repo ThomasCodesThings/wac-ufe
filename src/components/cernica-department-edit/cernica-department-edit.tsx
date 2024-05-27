@@ -42,8 +42,12 @@ export class CernicaDepartmentEdit {
   };
 
   private async fetchOperation() {
+    console.log("URL:", `${this.apiBase}/operations/${this.entryId}`);
+    console.log("method:", 'GET');
     try {
       const response = await fetch(`${this.apiBase}/operations/${this.entryId}`);
+      console.log("Response:", response);
+      console.log("Response.ok:", response.ok);
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
@@ -59,8 +63,12 @@ export class CernicaDepartmentEdit {
   }
 
   private async getDepartments() {
+    console.log("URL:", `${this.apiBase}/departments`);
+    console.log("method:", 'GET');
     try {
       const response = await fetch(`${this.apiBase}/departments`);
+      console.log("Response:", response);
+      console.log("Response.ok:", response.ok);
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
@@ -104,6 +112,8 @@ export class CernicaDepartmentEdit {
 
     if (this.entryId === "@new") {
       try {
+        console.log("URL:", `${this.apiBase}/operations`);
+        console.log("method:", 'POST');
         const response = await fetch(`${this.apiBase}/operations`, {
           method: 'POST',
           headers: {
@@ -111,6 +121,8 @@ export class CernicaDepartmentEdit {
           },
           body: data.toString(),
         });
+        console.log("Response:", response);
+        console.log("Response.ok:", response.ok);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -120,6 +132,8 @@ export class CernicaDepartmentEdit {
       }
     } else {
       try {
+        console.log("URL:", `${this.apiBase}/operations/${this.entryId}`);
+        console.log("method:", 'PUT');
         const response = await fetch(`${this.apiBase}/operations/${this.entryId}`, {
           method: 'PUT',
           headers: {
@@ -127,6 +141,8 @@ export class CernicaDepartmentEdit {
           },
           body: data.toString(),
         });
+        console.log("Response:", response);
+        console.log("Response.ok:", response.ok);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }

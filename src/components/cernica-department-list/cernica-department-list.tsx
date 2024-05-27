@@ -20,9 +20,13 @@ export class CernicaDepartmentList {
   @State() pricePerHour = 0;
 
   private async fetchOperations() {
+    console.log("URL:", `${this.apiBase}/operations`);
+    console.log("method:", 'GET');
     try {
       const response = await fetch(`${this.apiBase}/operations`);
       this.connectionOK = response.ok;
+      console.log("Response:", response);
+      console.log("Response.ok:", response.ok);
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
@@ -36,9 +40,13 @@ export class CernicaDepartmentList {
   }
 
   private async fetchDepartments() {
+    console.log("URL:", `${this.apiBase}/departments`);
+    console.log("method:", 'GET');
     try {
       const response = await fetch(`${this.apiBase}/departments`);
       this.connectionOK = response.ok;
+      console.log("Response:", response);
+      console.log("Response.ok:", response.ok);
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
@@ -52,10 +60,14 @@ export class CernicaDepartmentList {
   }
 
   private async deleteDepartment(departmentId: string) {
+    console.log("URL:", `${this.apiBase}/departments/${departmentId}`);
+    console.log("method:", 'DELETE');
     try {
       const response = await fetch(`${this.apiBase}/departments/${departmentId}`, {
         method: 'DELETE',
       });
+      console.log("Response:", response);
+      console.log("Response.ok:", response.ok);
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
@@ -70,6 +82,8 @@ export class CernicaDepartmentList {
     const data = new URLSearchParams();
     data.append('name', this.newDepartmentName);
     data.append('pricePerHour', this.pricePerHour.toString());
+    console.log("URL:", `${this.apiBase}/departments`);
+    console.log("method:", 'POST');
     try {
       const response = await fetch(`${this.apiBase}/departments`, {
         method: 'POST',
@@ -78,6 +92,8 @@ export class CernicaDepartmentList {
         },
         body: data.toString()
       });
+      console.log("Response:", response);
+      console.log("Response.ok:", response.ok);
       if (!response.ok) {
         console.log(response);
         throw new Error('Network response was not ok');
@@ -90,10 +106,14 @@ export class CernicaDepartmentList {
   }
 
   private async deleteOperation(operationId: string) {
+    console.log("URL:", `${this.apiBase}/operations/${operationId}`);
+    console.log("method:", 'DELETE');
     try {
       const response = await fetch(`${this.apiBase}/operations/${operationId}`, {
         method: 'DELETE'
       });
+      console.log("Response:", response);
+      console.log("Response.ok:", response.ok);
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }

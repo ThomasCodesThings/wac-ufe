@@ -39,9 +39,13 @@ export class CernicaDepartmentCreate {
   };
 
   private async getDepartments() {
+    console.log("URL:", `${this.apiBase}/departments`);
+    console.log("method:", 'GET');
     try {
       const response = await fetch(`${this.apiBase}/departments`);
       this.connectionOK = response.ok
+      console.log("Response:", response);
+      console.log("Response.ok:", response.ok);
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
@@ -63,6 +67,9 @@ export class CernicaDepartmentCreate {
     data.append('appointmentDate', this.scheduledDate);
     data.append('duration', this.duration);
 
+    console.log("URL:", `${this.apiBase}/operations`);
+    console.log("method:", 'POST');
+
     try {
       const response = await fetch(`${this.apiBase}/operations`, {
         method: 'POST',
@@ -71,6 +78,8 @@ export class CernicaDepartmentCreate {
         },
         body: data.toString()
       });
+      console.log("Response:", response);
+      console.log("Response.ok:", response.ok);
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }

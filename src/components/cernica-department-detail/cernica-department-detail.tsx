@@ -13,9 +13,13 @@ export class CernicaDepartmentDetails {
   @State() operations: any[] = [];
 
   private async fetchDepartment() {
+    console.log("URL:", `${this.apiBase}/departments/${this.entryId}`);
+    console.log("method:", 'GET');
     try {
       const response = await fetch(`${this.apiBase}/departments/${this.entryId}`);
       this.connectionOK = response.ok;
+      console.log("Response:", response);
+      console.log("Response.ok:", response.ok);
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
@@ -26,9 +30,13 @@ export class CernicaDepartmentDetails {
   }
 
   private async fetchOperations() {
+    console.log("URL:", `${this.apiBase}/departments/${this.entryId}/operations`);
+    console.log("method:", 'GET');
     try {
       const response = await fetch(`${this.apiBase}/departments/${this.entryId}/operations`);
       this.connectionOK = response.ok;
+      console.log("Response:", response);
+      console.log("Response.ok:", response.ok);
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
